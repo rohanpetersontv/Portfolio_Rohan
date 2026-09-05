@@ -9,7 +9,6 @@ import Projects from "./components/Projects"
 import Education from "./components/Education"
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
-import Admin from "./components/Admin"
 import NotFound from "./components/NotFound"
 
 function Home({ theme, toggleTheme }) {
@@ -51,7 +50,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home theme={theme} toggleTheme={toggleTheme} />} />
-        <Route path="/admin" element={<Admin />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

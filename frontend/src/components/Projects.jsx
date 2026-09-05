@@ -1,32 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./Projects.css"
 import { motion } from "framer-motion";
 import SectionAnimation from "../animations/SectionAnimation";
-import { getProjects } from "../services/api";
+import projectsData from "../data/projects";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 function Projects() {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  const fetchProjects = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await getProjects();
-      setProjects(data);
-      setLoading(false);
-    } catch (err) {
-      console.error("Error fetching projects:", err);
-      setError("Failed to load projects. Make sure the backend server is running.");
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchProjects();
-  }, []);
+  const [projects] = useState(projectsData);
 
   return (
     <SectionAnimation>
@@ -37,17 +17,7 @@ function Projects() {
             <h2 className="section-heading">Featured Work</h2>
           </div>
 
-          {loading ? (
-            <div className="loading-state">
-              <div className="loading-spinner"></div>
-              <p className="loading-text">Loading projects...</p>
-            </div>
-          ) : error ? (
-            <div className="error-state">
-              <p className="error-text">[ ERROR ] {error}</p>
-              <button className="retry-btn" onClick={fetchProjects}>↻ RETRY</button>
-            </div>
-          ) : projects.length === 0 ? (
+          {projects.length === 0 ? (
             <p className="empty-text">No projects found.</p>
           ) : (
             <div className="projects-container">

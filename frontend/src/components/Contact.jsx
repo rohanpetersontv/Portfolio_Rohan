@@ -2,7 +2,6 @@ import { useState } from "react"
 import "./Contact.css"
 import { motion } from "framer-motion";
 import SectionAnimation from "../animations/SectionAnimation";
-import { sendContactMessage } from "../services/api";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -23,8 +22,13 @@ function Contact() {
     event.preventDefault();
     setStatus("submitting");
     setErrorMessage("");
+    
+    // Fallback: mailto functionality for frontend-only form
     try {
-      await sendContactMessage(formData);
+      const { name, subject, message } = formData;
+      const mailtoLink = `mailto:rohanpetersontv@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\n\nMessage:\n${message}`)}`;
+      window.location.href = mailtoLink;
+      
       setStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
@@ -105,7 +109,7 @@ function Contact() {
             </button>
 
             {status === "success" && (
-              <p className="success-message">[ SUCCESS ] Transmission delivered securely.</p>
+              <p className="success-message">[ SUCCESS ] Email client opened for transmission.</p>
             )}
             {status === "error" && (
               <p className="error-message">[ ERROR ] {errorMessage}</p>
