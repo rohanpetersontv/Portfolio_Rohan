@@ -1,0 +1,282 @@
+.experience {
+  background-color: transparent;
+  color: var(--text-primary);
+}
+
+.experience-timeline {
+  max-width: 860px;
+  position: relative;
+  margin-top: var(--spacing-lg);
+}
+
+/* Animated vertical timeline line */
+.experience-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 19px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--cyan), var(--blue), rgba(139,92,246,0.3), transparent);
+  opacity: 0.6;
+}
+
+/* ===================================
+   TIMELINE ITEM
+=================================== */
+.exp-timeline-item {
+  position: relative;
+  padding-left: 64px;
+  margin-bottom: var(--spacing-lg);
+}
+
+.exp-timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* ===================================
+   TIMELINE DOT
+=================================== */
+.exp-timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background-color: var(--surface);
+  border: 1px solid var(--blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  font-size: 15px;
+  box-shadow:
+    0 0 10px rgba(59, 130, 246, 0.25),
+    0 0 0 4px var(--bg-primary);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+}
+
+.exp-timeline-item:hover .exp-timeline-dot {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2), rgba(0, 229, 212, 0.1));
+  border-color: var(--cyan);
+  color: var(--cyan);
+  box-shadow:
+    0 0 0 4px var(--bg-primary),
+    0 0 20px rgba(0, 229, 212, 0.5),
+    0 0 40px rgba(0, 229, 212, 0.2);
+  transform: scale(1.15) rotate(10deg);
+}
+
+/* ===================================
+   EXPERIENCE CARD — RICH GLOW HOVER
+=================================== */
+.experience-card {
+  background: linear-gradient(135deg, var(--panel) 0%, #0a1524 100%);
+  padding: var(--spacing-lg);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+/* Top gradient accent bar */
+.exp-card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-bright), transparent);
+  transition: all 0.4s ease;
+}
+
+/* Scan line sweep effect */
+.experience-card::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(59, 130, 246, 0.04) 50%,
+    transparent 100%
+  );
+  transition: top 0.6s ease;
+  pointer-events: none;
+}
+
+/* Corner glow orb */
+.experience-card::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08), transparent 65%);
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+/* ── HOVER STATE ── */
+.exp-timeline-item:hover .experience-card {
+  transform: translateY(-6px) translateX(2px);
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow:
+    0 0 0 1px rgba(0, 229, 212, 0.15),
+    0 8px 40px rgba(59, 130, 246, 0.25),
+    0 20px 60px rgba(59, 130, 246, 0.12),
+    inset 0 0 30px rgba(59, 130, 246, 0.04);
+}
+
+.exp-timeline-item:hover .experience-card::before {
+  top: 100%;
+}
+
+.exp-timeline-item:hover .experience-card::after {
+  bottom: -30px;
+  right: -30px;
+  background: radial-gradient(circle, rgba(0, 229, 212, 0.12), transparent 65%);
+}
+
+.exp-timeline-item:hover .exp-card-accent {
+  background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
+  box-shadow: 0 0 12px rgba(0, 229, 212, 0.6);
+}
+
+/* ===================================
+   CARD CONTENT
+=================================== */
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-sm);
+  gap: var(--spacing-md);
+}
+
+.exp-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.exp-type {
+  font-family: var(--font-code);
+  font-size: 11px;
+  color: var(--cyan);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.exp-timeline-item:hover .exp-type {
+  text-shadow: 0 0 12px rgba(0, 229, 212, 0.7);
+}
+
+.experience-card h3 {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.exp-timeline-item:hover .experience-card h3 {
+  color: #fff;
+}
+
+.experience-card h4 {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.experience-duration {
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--blue-bright);
+  background: var(--bg-primary);
+  padding: 5px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--border-bright);
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.exp-timeline-item:hover .experience-duration {
+  border-color: var(--blue);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+  color: #fff;
+}
+
+.experience-description {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  line-height: 1.75;
+  font-size: 15px;
+  margin-bottom: var(--spacing-md);
+  margin-top: var(--spacing-md);
+  transition: color 0.3s ease;
+}
+
+.exp-timeline-item:hover .experience-description {
+  color: var(--text-primary);
+}
+
+/* ===================================
+   HIGHLIGHT TAGS
+=================================== */
+.exp-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.exp-highlight-tag {
+  background-color: var(--surface);
+  color: var(--text-secondary);
+  padding: 5px 14px;
+  border-radius: 4px;
+  font-family: var(--font-code);
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid var(--border-bright);
+  transition: all 0.25s ease;
+}
+
+.exp-highlight-tag:hover,
+.exp-timeline-item:hover .exp-highlight-tag {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: var(--blue);
+  color: var(--blue-bright);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.2);
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+@media (max-width: 768px) {
+  .experience-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .experience-duration {
+    align-self: flex-start;
+  }
+}

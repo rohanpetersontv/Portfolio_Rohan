@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap');
+
+:root {
+  /* BACKGROUND */
+  --bg-primary: #050914;
+  --bg-secondary: #08101f;
+  --surface: #0b1426;
+  --surface-elevated: #101b31;
+
+  /* PANELS */
+  --panel: #0d1729;
+  --panel-hover: #111f36;
+
+  /* BORDERS */
+  --border: #1c2b46;
+  --border-bright: #29466d;
+
+  /* PRIMARY BLUE */
+  --blue: #3b82f6;
+  --blue-bright: #60a5fa;
+
+  /* CYAN / TEAL */
+  --cyan: #00e5d4;
+  --cyan-bright: #22d3ee;
+
+  /* PURPLE / MAGENTA */
+  --purple: #8b5cf6;
+  --magenta: #c026d3;
+
+  /* TEXT */
+  --text-primary: #e6edf7;
+  --text-secondary: #9aa9bf;
+  --text-muted: #5f718c;
+
+  /* UTILITY */
+  --success: #22c55e;
+  --error: #ef4444;
+
+  /* SPACING & LAYOUT */
+  --spacing-base: 8px;
+  --spacing-xs: 4px;
+  --spacing-sm: 12px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 80px;
+  --container-max: 1280px;
+  --section-pad-x: clamp(24px, 6vw, 80px);
+  
+  /* FONTS */
+  --font-heading: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+  
+  --card-radius: 10px;
+  --btn-radius: 4px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 16px;
+  overflow-x: hidden;
+  
+  /* Subtle grid + radial accents */
+  background-image: 
+    radial-gradient(ellipse at 15% 15%, rgba(59,130,246,0.12), transparent 35%),
+    radial-gradient(ellipse at 85% 65%, rgba(0,229,212,0.07), transparent 35%),
+    radial-gradient(ellipse at 50% 90%, rgba(139,92,246,0.06), transparent 30%),
+    linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+/* ===================================
+   GLOBAL SECTION WRAPPER
+   Sections fill full width; content is
+   centered via inner .section-inner
+=================================== */
+section {
+  width: 100%;
+  padding: var(--spacing-xl) var(--section-pad-x);
+}
+
+/* Content container — centered, max-width */
+.section-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Reusable Technical Label */
+.tech-label {
+  font-family: var(--font-code);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--spacing-sm);
+  display: block;
+}
+
+/* Section header block */
+.section-header {
+  margin-bottom: var(--spacing-xl);
+  text-align: left;
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: var(--spacing-xs);
+  position: relative;
+  display: inline-block;
+}
+
+/* Subtle heading underline accent */
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--blue));
+  border-radius: 2px;
+}
+
+/* ===================================
+   SCROLLBAR
+=================================== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-bright);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--blue);
+}
+
+/* ===================================
+   SELECTION
+=================================== */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: var(--text-primary);
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+@media (max-width: 768px) {
+  section {
+    padding: var(--spacing-lg) 20px;
+  }
+}
+
+/* ===================================
+   LIGHT MODE OVERRIDES
+   (dark is the default theme)
+=================================== */
+body.light-mode {
+  --bg-primary:       #f0f4ff;
+  --bg-secondary:     #e8edf8;
+  --surface:          #dde5f5;
+  --surface-elevated: #cdd8f0;
+
+  --panel:            #e2eaf8;
+  --panel-hover:      #d5e0f5;
+
+  --border:           #b8c8e8;
+  --border-bright:    #94aad5;
+
+  --text-primary:     #0d1829;
+  --text-secondary:   #2a3f6a;
+  --text-muted:       #5a70a0;
+
+  background-image:
+    radial-gradient(ellipse at 15% 15%, rgba(59,130,246,0.08), transparent 35%),
+    radial-gradient(ellipse at 85% 65%, rgba(0,180,200,0.05), transparent 35%),
+    linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+  background-color: var(--bg-primary);
+}
+
+body.light-mode .navbar {
+  background: rgba(240, 244, 255, 0.7);
+}
+
+body.light-mode .navbar--scrolled {
+  background: rgba(220, 230, 250, 0.92);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode .nav-links {
+  background: var(--surface);
+}

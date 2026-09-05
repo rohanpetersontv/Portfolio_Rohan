@@ -1,0 +1,227 @@
+.education {
+  background-color: transparent;
+  color: var(--text-primary);
+}
+
+.education-timeline {
+  max-width: 860px;
+  position: relative;
+  margin-top: var(--spacing-lg);
+}
+
+.education-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 19px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--cyan), var(--blue), transparent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 64px;
+  margin-bottom: var(--spacing-lg);
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* ===================================
+   TIMELINE DOT
+=================================== */
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background-color: var(--surface);
+  border: 1px solid var(--cyan);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan);
+  font-size: 16px;
+  box-shadow: 0 0 12px rgba(0, 229, 212, 0.25), 0 0 0 4px var(--bg-primary);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 2;
+}
+
+.timeline-item:hover .timeline-dot {
+  background: radial-gradient(circle, rgba(0,229,212,0.18), rgba(59,130,246,0.1));
+  border-color: var(--cyan);
+  box-shadow:
+    0 0 0 4px var(--bg-primary),
+    0 0 20px rgba(0, 229, 212, 0.6),
+    0 0 40px rgba(0, 229, 212, 0.25);
+  transform: scale(1.15) rotate(-10deg);
+}
+
+/* ===================================
+   EDUCATION CARD — GLOW HOVER
+=================================== */
+.education-card {
+  background: linear-gradient(135deg, var(--panel), #0a1524);
+  padding: var(--spacing-lg);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+/* Top gradient accent bar */
+.edu-card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-bright), transparent);
+  transition: all 0.4s ease;
+}
+
+/* Corner glow orb */
+.education-card::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(0, 229, 212, 0.06), transparent 65%);
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.timeline-item:hover .education-card {
+  transform: translateY(-6px) translateX(2px);
+  border-color: rgba(0, 229, 212, 0.5);
+  box-shadow:
+    0 0 0 1px rgba(0, 229, 212, 0.12),
+    0 8px 40px rgba(0, 229, 212, 0.18),
+    0 20px 60px rgba(59, 130, 246, 0.1),
+    inset 0 0 30px rgba(0, 229, 212, 0.03);
+}
+
+.timeline-item:hover .edu-card-accent {
+  background: linear-gradient(90deg, var(--cyan), var(--blue), var(--cyan));
+  box-shadow: 0 0 14px rgba(0, 229, 212, 0.6);
+}
+
+.timeline-item:hover .education-card::after {
+  bottom: -30px;
+  right: -30px;
+  background: radial-gradient(circle, rgba(0, 229, 212, 0.14), transparent 65%);
+}
+
+/* ===================================
+   CONTENT
+=================================== */
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-sm);
+  gap: var(--spacing-md);
+}
+
+.education-card h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.timeline-item:hover .education-card h3 {
+  color: #fff;
+}
+
+.education-year {
+  color: var(--cyan);
+  font-family: var(--font-code);
+  font-weight: 500;
+  font-size: 12px;
+  background: var(--bg-primary);
+  padding: 5px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--border-bright);
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .education-year {
+  border-color: var(--cyan);
+  box-shadow: 0 0 10px rgba(0, 229, 212, 0.3);
+}
+
+.education-card h4 {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-md);
+  transition: color 0.3s ease;
+}
+
+.timeline-item:hover .education-card h4 {
+  color: var(--text-secondary);
+}
+
+.education-description {
+  font-family: var(--font-body);
+  color: var(--text-secondary);
+  line-height: 1.75;
+  font-size: 15px;
+  margin-bottom: var(--spacing-md);
+  transition: color 0.3s ease;
+}
+
+.timeline-item:hover .education-description {
+  color: var(--text-primary);
+}
+
+.education-grade {
+  display: inline-block;
+  background: var(--bg-primary);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: var(--font-code);
+  font-size: 13px;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-bright);
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .education-grade {
+  border-color: var(--cyan);
+  box-shadow: 0 0 8px rgba(0, 229, 212, 0.2);
+}
+
+.education-grade strong {
+  color: var(--blue-bright);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .education-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .education-year {
+    align-self: flex-start;
+  }
+}

@@ -1,0 +1,174 @@
+.skills {
+  background-color: transparent;
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+}
+
+/* ===================================
+   SKILL CATEGORY CARD — GLOW HOVER
+=================================== */
+.skill-category {
+  background: linear-gradient(135deg, var(--panel), #0a1524);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: var(--spacing-md);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Gradient accent bar at top */
+.skill-category::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transition: box-shadow 0.35s ease, background 0.35s ease;
+}
+
+/* Corner glow orb */
+.skill-category::after {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+/* Per-color variants */
+.skill-category--blue::before   { background: linear-gradient(90deg, transparent, rgba(59,130,246,0.4), transparent); }
+.skill-category--orange::before { background: linear-gradient(90deg, transparent, rgba(249,115,22,0.4), transparent); }
+.skill-category--green::before  { background: linear-gradient(90deg, transparent, rgba(34,197,94,0.4), transparent); }
+.skill-category--cyan::before   { background: linear-gradient(90deg, transparent, rgba(0,229,212,0.4), transparent); }
+.skill-category--purple::before { background: linear-gradient(90deg, transparent, rgba(139,92,246,0.4), transparent); }
+.skill-category--magenta::before{ background: linear-gradient(90deg, transparent, rgba(192,38,211,0.4), transparent); }
+
+.skill-category--blue::after   { background: radial-gradient(circle, rgba(59,130,246,0.07), transparent 70%); }
+.skill-category--orange::after { background: radial-gradient(circle, rgba(249,115,22,0.07), transparent 70%); }
+.skill-category--green::after  { background: radial-gradient(circle, rgba(34,197,94,0.07), transparent 70%); }
+.skill-category--cyan::after   { background: radial-gradient(circle, rgba(0,229,212,0.07), transparent 70%); }
+.skill-category--purple::after { background: radial-gradient(circle, rgba(139,92,246,0.07), transparent 70%); }
+.skill-category--magenta::after{ background: radial-gradient(circle, rgba(192,38,211,0.07), transparent 70%); }
+
+/* Hover states per color */
+.skill-category--blue:hover   { border-color: rgba(59,130,246,0.55);  box-shadow: 0 0 0 1px rgba(59,130,246,0.1),  0 8px 35px rgba(59,130,246,0.22),  inset 0 0 20px rgba(59,130,246,0.04); }
+.skill-category--orange:hover { border-color: rgba(249,115,22,0.45); box-shadow: 0 0 0 1px rgba(249,115,22,0.1), 0 8px 35px rgba(249,115,22,0.18), inset 0 0 20px rgba(249,115,22,0.03); }
+.skill-category--green:hover  { border-color: rgba(34,197,94,0.45);  box-shadow: 0 0 0 1px rgba(34,197,94,0.1),  0 8px 35px rgba(34,197,94,0.18),  inset 0 0 20px rgba(34,197,94,0.03); }
+.skill-category--cyan:hover   { border-color: rgba(0,229,212,0.5);   box-shadow: 0 0 0 1px rgba(0,229,212,0.1),  0 8px 35px rgba(0,229,212,0.2),   inset 0 0 20px rgba(0,229,212,0.04); }
+.skill-category--purple:hover { border-color: rgba(139,92,246,0.5);  box-shadow: 0 0 0 1px rgba(139,92,246,0.1), 0 8px 35px rgba(139,92,246,0.2),  inset 0 0 20px rgba(139,92,246,0.04); }
+.skill-category--magenta:hover{ border-color: rgba(192,38,211,0.45); box-shadow: 0 0 0 1px rgba(192,38,211,0.1), 0 8px 35px rgba(192,38,211,0.18), inset 0 0 20px rgba(192,38,211,0.03); }
+
+.skill-category:hover::before {
+  box-shadow: 0 0 12px currentColor;
+}
+
+.skill-category:hover::after {
+  bottom: -30px;
+  right: -30px;
+}
+
+/* ===================================
+   CATEGORY TITLE
+=================================== */
+.category-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--spacing-sm);
+  transition: color 0.3s ease;
+}
+
+.skill-category:hover .category-title {
+  color: #fff;
+}
+
+.category-icon {
+  font-size: 18px;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.skill-category--blue .category-icon   { color: var(--blue-bright); }
+.skill-category--orange .category-icon { color: #fb923c; }
+.skill-category--green .category-icon  { color: var(--success); }
+.skill-category--cyan .category-icon   { color: var(--cyan); }
+.skill-category--purple .category-icon { color: var(--purple); }
+.skill-category--magenta .category-icon{ color: #e879f9; }
+
+.skill-category:hover .category-icon {
+  transform: scale(1.2) rotate(-8deg);
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* ===================================
+   SKILL BADGES
+=================================== */
+.category-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.skill-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background-color: var(--surface);
+  border: 1px solid var(--border-bright);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: var(--font-code);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.22s ease;
+  cursor: default;
+}
+
+.skill-badge:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--blue-bright);
+  border-color: var(--blue);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
+}
+
+.skill-icon {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  color: inherit;
+  transition: filter 0.2s ease;
+}
+
+.skill-badge:hover .skill-icon {
+  filter: drop-shadow(0 0 4px var(--blue));
+}
+
+@media (max-width: 768px) {
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+}

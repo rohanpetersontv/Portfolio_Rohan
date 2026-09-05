@@ -1,0 +1,219 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px var(--spacing-xl);
+  background: rgba(5, 9, 20, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(148, 163, 196, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden; /* clips the progress bar */
+}
+
+.navbar--scrolled {
+  background: rgba(5, 9, 20, 0.88);
+  border-bottom-color: rgba(148, 163, 196, 0.12);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ===================================
+   SCROLL PROGRESS BAR
+=================================== */
+.scroll-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--blue));
+  box-shadow: 0 0 8px var(--cyan);
+  transition: width 0.08s linear;
+  pointer-events: none;
+}
+
+/* ===================================
+   LOGO
+=================================== */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-shrink: 0;
+}
+
+.logo-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--cyan);
+  flex-shrink: 0;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* ===================================
+   NAV LINKS
+=================================== */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+.nav-links li {
+  cursor: pointer;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-weight: 500;
+  position: relative;
+  transition: color 0.25s ease;
+  font-size: 14px;
+  padding-bottom: 2px;
+}
+
+/* Underline indicator */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: linear-gradient(90deg, var(--cyan), var(--blue));
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-links a:hover::after,
+.nav-links a.nav-active::after {
+  width: 100%;
+}
+
+.nav-links a.nav-active {
+  color: var(--blue-bright);
+}
+
+/* ===================================
+   RESUME BUTTON
+=================================== */
+.nav-links a.resume-button {
+  background: transparent;
+  color: var(--text-primary);
+  padding: 7px 16px;
+  border: 1px solid var(--border-bright);
+  border-radius: var(--btn-radius);
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+  font-family: var(--font-code);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+/* no underline on the resume button */
+.nav-links a.resume-button::after {
+  display: none;
+}
+
+.nav-links a.resume-button:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: var(--blue);
+  color: var(--blue-bright);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+/* ===================================
+   THEME TOGGLE BUTTON
+=================================== */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border-bright);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  box-shadow: 0 0 12px rgba(0, 229, 212, 0.35);
+  transform: rotate(20deg);
+}
+
+/* Hide desktop toggle on mobile (it's already in nav-controls-mobile) */
+.theme-toggle--desktop {
+  display: flex;
+}
+
+/* ===================================
+   MOBILE
+=================================== */
+.nav-controls-mobile {
+  display: none;
+  align-items: center;
+  gap: 15px;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 18px var(--spacing-md);
+    position: relative;
+  }
+
+  .nav-controls-mobile {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 0;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
