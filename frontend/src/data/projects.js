@@ -17,7 +17,7 @@ const projects = [
   },
   {
     title: "AI-Powered Personalized Nutrition Coach",
-    image: project1,
+    image: "/projects/project2.png",
     description:
       "An AI-powered fitness recommendation system that generates personalized workout suggestions based on user information and fitness goals.",
     technologies: [
@@ -26,22 +26,9 @@ const projects = [
       "Machine Learning",
       "Node.js",
     ],
-    githubUrl: "https://github.com/rohanpetersonvt/AI-POWERED-PERSONALIZED-NUTRITION-COACH",
+    githubUrl: "https://github.com/rohanpetersontv/AI-POWERED-PERSONALIZED-NUTRITION-COACH",
     liveUrl: "",
   },
-  {
-    title: "SupplyGraph AI",
-    image: project1,
-    description: "AI-powered supply chain intelligence platform.",
-    technologies: [
-      "React",
-      "Node.js",
-      "Python",
-      "PostgreSQL"
-    ],
-    githubUrl: "",
-    liveUrl: ""
-  }
 ];
 
 export default projects;

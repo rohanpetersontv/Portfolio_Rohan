@@ -79,6 +79,32 @@
 }
 
 /* ===================================
+   GITHUB PROFILE CTA
+=================================== */
+.projects-github-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.cta-label {
+  font-family: var(--font-code);
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.cta-github-btn {
+  font-size: 13px !important;
+  padding: 12px 28px !important;
+}
+
+/* ===================================
    PROJECT CARD — GLOW HOVER
 =================================== */
 .project-card {

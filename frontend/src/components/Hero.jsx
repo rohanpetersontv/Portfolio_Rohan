@@ -3,6 +3,7 @@ import profileImage from "../assets/profile.jpg";
 import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
 import InteractiveBackground from "./InteractiveBackground";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 function Hero() {
   return (
@@ -97,6 +98,24 @@ function Hero() {
             </a>
             <a href="/resume.pdf" download className="secondary-button">
               DOWNLOAD RESUME
+            </a>
+          </motion.div>
+
+          {/* Social Links */}
+          <motion.div
+            className="hero-socials"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.1, duration: 0.7 }}
+          >
+            <a href="https://github.com/rohanpetersontv" target="_blank" rel="noreferrer" className="social-link" title="GitHub">
+              <FaGithub />
+            </a>
+            <a href="https://www.linkedin.com/in/rohanpetersontv" target="_blank" rel="noreferrer" className="social-link" title="LinkedIn">
+              <FaLinkedin />
+            </a>
+            <a href="mailto:rohanpetersontv@gmail.com" className="social-link" title="Email">
+              <FaEnvelope />
             </a>
           </motion.div>
 

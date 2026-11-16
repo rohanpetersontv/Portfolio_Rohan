@@ -45,7 +45,9 @@ function Skills() {
       icon: <FaDatabase />,
       color: "cyan",
       skills: [
-        { name: "PostgreSQL", icon: <SiPostgresql /> }
+        { name: "PostgreSQL", icon: <SiPostgresql /> },
+        { name: "MySQL", icon: <SiMysql /> },
+        { name: "MongoDB", icon: <SiMongodb /> }
       ]
     },
     {
@@ -64,8 +66,9 @@ function Skills() {
       icon: <FaBrain />,
       color: "magenta",
       skills: [
-        { name: "Python", icon: <FaPython /> },
-        { name: "Machine Learning", icon: <FaBrain /> }
+        { name: "Machine Learning", icon: <FaBrain /> },
+        { name: "TensorFlow", icon: <SiTensorflow /> },
+        { name: "scikit-learn", icon: <SiScikitlearn /> }
       ]
     }
   ];

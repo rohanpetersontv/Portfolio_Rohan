@@ -43,7 +43,7 @@ function Contact() {
       <section className="contact" id="contact">
         <div className="section-inner">
           <div className="section-header contact-header">
-            <span className="tech-label">07 / COMMUNICATION</span>
+            <span className="tech-label">06 / CONTACT</span>
             <h2 className="section-heading">Initialize Contact</h2>
           </div>
           <p className="contact-description">
